@@ -2,7 +2,7 @@ module ExceptionNotifier
   class ThrottleNotifier
     def initialize options={}
       @notifier = ExceptionNotifier.create_notifier(options[:notifier], options[:notifier_options] || {})
-      @max_notifications_per_hour = 3
+      @max_notifications_per_hour = options[:per_hour] || 3
       @past_exceptions = Hash.new {|h,k| h[k] = []}
     end
 
